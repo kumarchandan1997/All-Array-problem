@@ -265,7 +265,7 @@ $array = [1,2,3,4,5];
   ```
 
   ### 10.Find common elements between two arrays.
-  ``php
+  ```php
    $array = [1,2,3,4];
    $array1 = [1,3,4,4];
   
@@ -289,5 +289,302 @@ $array = [1,2,3,4,5];
       
    }
    print_r(findCommonData($array,$array1));
+  ```
+
+  ### 11.Find the most frequently occurring element in an array.
+  ```php
+  function findMostFrequently($array)
+   {
+       $newArray=[];
+       $length=0;
+       while(isset($array[$length])){
+           $length++;
+       }
+       for($i=0;$i<$length;$i++)
+       {
+           if(isset($newArray[$array[$i]])){
+               $newArray[$array[$i]]++;
+           }else{
+               $newArray[$array[$i]] =1;
+           }
+       }
+       
+       $mostFrequent = null;
+       $maxCount = 0;
+    
+    foreach ($newArray as $key => $count) {
+        if ($count > $maxCount) {
+            $maxCount = $count;
+            $mostFrequent = $key;
+        }
+    }
+    
+    return $mostFrequent;
+   }
+   
+   $array = [1,2,2,2,2,3,3,4];
+   
+  print_r(findMostFrequently($array));
+   
+  ```
+  ### 12.Implement array_map() functionality manually.
+  ```php
+   $array = [1, 2, 3, 4, 6];
+
+   function manularrayMap($callback,$arr)
+   {
+       $result =[];
+       
+       foreach($arr as $key => $value)
+       {
+           $result[$key] = $callback($value);
+       }
+       return $result;
+   }
+   
+   function multipleNumber($num)
+   {
+       return $num *2;
+   }
+   print_r(manularrayMap('multipleNumber',$array));
+   ```
+
+ ### 13.Find the intersection and difference of two arrays without built-in functions.
+ ```php
+  $array = [1, 2, 3];
+  $array1 = [1,4,3]; 
+  
+  //print_r(array_intersect($array,$array1));
+
+  function intersectOfArray($arr,$arr1)
+  {
+      $result =[];
+      
+      for($i=0;$i<count($arr);$i++)
+      {
+          for($j=0;$j<count($arr1);$j++)
+          {
+              if($arr[$i] === $arr1[$j]){
+                    $result[] = $arr[$i];
+                    break;
+              }
+          }
+      }
+      return ($result);
+  }
+  
+  print_r(intersectOfArray($array,$array1));
+
+ ```
+
+ ### 14.Find the missing number in an array of consecutive numbers.
+ ```php
+  $array = [1,2,3,4,6];
+  
+   function consecutiveMissingNumber($arr)
+   {
+       $finalNumber = 0;
+       $arraySum = array_sum($arr);
+       $n = count($arr)+1;
+       $mathSum = ($n *($n+1))/2;
+       $finalNumber = ($mathSum) - ($arraySum);
+       return $finalNumber;
+   }
+   
+   echo consecutiveMissingNumber($array);
+ ```
+
+ ### 15.Rearrange an array so that even numbers come before odd numbers.
+ ```php
+ $array = [1, 2, 3,4,5,6];
+  
+   function rearrangeArray($arr)
+   {
+       $evenNumber = array_filter($arr, function($num){
+           return $num%2 ==0;
+       });
+       
+       $oddNumber = array_filter($arr , function($num){
+           return $num %2 != 0;
+       });
+       
+       return array_merge($evenNumber,$oddNumber);
+   }
+   
+   print_r(rearrangeArray($array));
+
+   $array = [1, 2, 3,4,5,6];
+  
+   function rearrangeArray($arr)
+   {
+       $evenArray = [];
+       $oddArray = [];
+       
+       foreach($arr as $ar)
+       {
+           if($ar %2 ==0)
+           {
+               $evenArray[] =$ar;
+           }else{
+               $oddArray[] = $ar;
+           }
+       }
+       $result =[];
+       
+       foreach($evenArray as $even)
+       {
+           $result[] =$even;
+       }
+       foreach($oddArray as $odd)
+       {
+           $result[] =$odd;
+       }
+       return $result;
+   }
+   
+   print_r(rearrangeArray($array));
+   ```
+
+   ### 15.Rotate an array by n positions.
+   ```php
+    function rotateArrayRight($arr, $n) {
+    $length = count($arr);
+    $n = $n % $length;
+
+    if ($n == 0) return $arr;
+
+    return array_merge(array_slice($arr, -$n), array_slice($arr, 0, $length - $n));
+  }
+
+    $arr = [1, 2, 3, 4, 5, 6, 7];
+    $n = 2;
+
+    $result = rotateArrayRight($arr, $n);
+    print_r($result);
+
+   ```
+
+   ### 16.Find all pairs in an array that sum up to a given number.
+
+   ```php
+   function findPairsWithSum($arr,$value)
+   {
+    $seen =[];
+    $pair =[];
+    
+    foreach($arr as $num)
+    {
+        $complement = $value-$num;
+        if(isset($seen[$complement])){
+            $pair[] =[$complement,$num];
+        }
+        $seen[$num] =true;
+    }
+    return $pair;
+  }
+    $array = [1, 4, 6, 2, 3, 7, 8, 5];
+    $target = 5;
+    print_r(findPairsWithSum($array,$target));
+    ```
+
+    ### 17.Convert an associative array into JSON and back to an array.
+    ```php
+    $assocArray = [
+    "name" => "John Doe",
+    "age" => 30,
+    "email" => "john@example.com",
+    "skills" => ["PHP", "JavaScript", "Laravel"]
+    ];
+
+    $jsonString = json_encode($assocArray, JSON_PRETTY_PRINT);
+    echo "JSON String:\n" . $jsonString . "\n\n";
+
+
+    $decodedArray = json_decode($jsonString,true);
+    print_r($decodedArray);
+```
+
+ ### 17.Implement a stack and queue using PHP arrays.
+ ```php
+  class stack{
+      private $stack =[];
+      
+      public function push($element)
+      {
+          array_push($this->stack,$element);
+      }
+      
+      public function pop(){
+          if(!$this->isEmpty()){
+              return array_pop($this->stack);
+          }
+          return null;
+      }
+      public function peek(){
+          return !$this->isEmpty() ? end($this->stack) :null;
+      }
+      public function isEmpty(){
+          return empty($this->stack);
+      }
+      public function display(){
+          print_r(array_reverse($this->stack));
+      }
+  }
+    $stack = new Stack();
+    $stack->push(10);
+    $stack->push(20);
+    $stack->push(30);
+
+    echo "Stack after pushing elements:\n";
+    $stack->display();
+
+    echo "\nPopped element: " . $stack->pop() . "\n";
+    echo "Stack after popping:\n";
+    $stack->display();
+```
+
+### 18.Find all vowels from given array? 
+```php
+    $array = ["chandan kumar"];
+    $vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    $result = [];
+
+    foreach ($array as $word) {
+        $length = 0;
+        while (isset($word[$length])) { 
+            $length++;
+        }
+
+        for ($i = 0; $i < $length; $i++) {
+            foreach ($vowels as $vowel) {
+                if ($word[$i] == $vowel) {
+                    $result[] = $word[$i];
+                    break;
+                }
+            }
+        }
+    }
+
+    print_r($result);
+
+```
+
+ ### 19.Remove a key-value pair from an associative array.
+```php
+  $fruits = ["mongo"=>12,'banana'=>123,'juice'=>'1234'];
+
+    //unset($fruits['banana']);
+   //print_r($fruits);
+
+  $newArray =[];
+  
+  foreach($fruits as $key => $value)
+  {
+      if($key !== 'mongo')
+      {
+          $newArray[$key] =$value;
+      }
+  }
+  print_r($newArray);
   ```
 
