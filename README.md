@@ -23,7 +23,7 @@ $array = [1,2,3,4,5];
     }
     print_r(reverseArray($array));
 ```
-<br>
+<!-- <br> -->
 
 ### 2. Find the largest and smallest numbers in an array.
 
