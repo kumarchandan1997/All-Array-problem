@@ -1,8 +1,9 @@
-# Array Questions and Answers
+# Important Array Questions with Answer
 
 ### 1. Reverse an array without using built-in functions.
+
 ```php
-   $array = [1,2,3,4,5];
+$array = [1,2,3,4,5];
     // print_r(array_reverse($array));
     
     function reverseArray($array)
@@ -21,10 +22,13 @@
     return $reverse;
     }
     print_r(reverseArray($array));
+```
+<br>
 
-    ### 2. Find the largest and smallest numbers in an array.
+### 2. Find the largest and smallest numbers in an array.
+
 ```php
-   $array = [-1,-2,-3000000,-40000,50000];
+  $array = [-1,-2,-3000000,-40000,50000];
     
     function findMaxAndMin($array)
     {
@@ -51,3 +55,5 @@
     }
     
     print_r(findMaxAndMin($array));
+```
+
