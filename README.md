@@ -587,4 +587,26 @@ $array = [1,2,3,4,5];
   }
   print_r($newArray);
   ```
+### 20.Reverse words only without use of in-build function in php
+```php
+  $string = "my name is chandan kumar yadav";
+  
+  function reverseString($string)
+  {
+      $words = explode(" ",$string);
+      $length=0;
+        $newArray = [];
+      while(isset($words[$length])){
+          $length++;
+      }
+ 
+    
+      for($i=$length-1;$i>=0;$i--)
+      {
+          $newArray[] = $words[$i];
+      }
+      return implode(" ",$newArray);
+  }
+  print_r(reverseString($string));
+  ```
 
