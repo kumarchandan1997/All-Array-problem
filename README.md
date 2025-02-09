@@ -504,7 +504,7 @@ $array = [1,2,3,4,5];
     print_r($decodedArray);
 ```
 
- ### 17.Implement a stack and queue using PHP arrays.
+ ### 18.Implement a stack and queue using PHP arrays.
  ```php
   class stack{
       private $stack =[];
@@ -543,7 +543,7 @@ $array = [1,2,3,4,5];
     $stack->display();
 ```
 
-### 18.Find all vowels from given array? 
+### 19.Find all vowels from given array? 
 ```php
     $array = ["chandan kumar"];
     $vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
@@ -569,7 +569,7 @@ $array = [1,2,3,4,5];
 
 ```
 
- ### 19.Remove a key-value pair from an associative array.
+ ### 20.Remove a key-value pair from an associative array.
 ```php
   $fruits = ["mongo"=>12,'banana'=>123,'juice'=>'1234'];
 
@@ -587,7 +587,7 @@ $array = [1,2,3,4,5];
   }
   print_r($newArray);
   ```
-### 20.Reverse words only without use of in-build function in php
+### 21.Reverse words only without use of in-build function in php
 ```php
   $string = "my name is chandan kumar yadav";
   
