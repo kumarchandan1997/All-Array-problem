@@ -481,14 +481,14 @@ $array = [1,2,3,4,5];
         $seen[$num] =true;
     }
     return $pair;
-  }
+   }
     $array = [1, 4, 6, 2, 3, 7, 8, 5];
     $target = 5;
     print_r(findPairsWithSum($array,$target));
-    ```
+ ```
 
-    ### 17.Convert an associative array into JSON and back to an array.
-    ```php
+ ### 17.Convert an associative array into JSON and back to an array.
+ ```php
     $assocArray = [
     "name" => "John Doe",
     "age" => 30,
