@@ -610,3 +610,28 @@ $array = [1,2,3,4,5];
   print_r(reverseString($string));
   ```
 
+### 22.Two sum problem in leetcode
+```php
+  function twoSum($nums , $target)
+ {
+    $map =[];
+    foreach($nums as $index => $num){
+        $complement = $target-$num;
+        
+        if(isset($map[$complement]))
+        {
+            return [$map[$complement],$index];
+        }
+        
+        $map[$num] =$index;
+    }
+    return null;
+}
+$nums = [2, 7, 11, 15];
+$target = 17;
+
+$result = twoSum($nums, $target);
+print_r($result);
+  ```
+
+
