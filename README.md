@@ -634,4 +634,30 @@ $result = twoSum($nums, $target);
 print_r($result);
   ```
 
+### 22.Remove Element array from leet code
+```php
+  function removeElement(&$nums, $val) {
+    $n = count($nums);
+    $i = 0;
+    for ($j = 0; $j < $n; $j++) {
+        if ($nums[$j] !== $val) {
+            $nums[$i] = $nums[$j];
+            $i++;
+        }
+    }
+    
+    for ($k = $i; $k < $n; $k++) {
+        $nums[$k] = '_';
+    }
+    
+    return $nums;
+}
+$nums = [3, 2, 2, 3];
+$val = 3;
+
+$newLength = removeElement($nums, $val);
+
+print_r($nums);
+  ```
+
 
