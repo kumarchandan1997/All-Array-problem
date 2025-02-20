@@ -634,7 +634,7 @@ $result = twoSum($nums, $target);
 print_r($result);
   ```
 
-### 22.Remove Element array from leet code
+### 23.Remove Element array from leet code
 ```php
   function removeElement(&$nums, $val) {
     $n = count($nums);
@@ -658,6 +658,50 @@ $val = 3;
 $newLength = removeElement($nums, $val);
 
 print_r($nums);
+  ```
+
+### 24.Search insert position and if not find than insert position from leet code
+```php
+ function searchInsert($nums, $target) {
+        $n = count($nums);
+
+        for($i=0;$i<$n;$i++)
+        {
+            if($nums[$i] == $target){
+                return $i;
+            }
+        }
+
+        for($j=0;$j<$n;$j++)
+        {
+            if($target<$nums[$j]){
+                return $j;
+            }
+        }
+        return $n;
+    }
+}
+
+second  approch by use of binary search
+
+function findIndex($nums, $target) {
+    $left = 0;
+    $right = count($nums) - 1;
+    
+    while ($left <= $right) {
+        $mid = $left + (int)(($right - $left) / 2);
+        
+        if ($nums[$mid] == $target) {
+            return $mid;
+        } elseif ($nums[$mid] < $target) {
+            $left = $mid + 1;
+        } else {
+            $right = $mid - 1;
+        }
+    }
+    
+    return $left;
+}
   ```
 
 
