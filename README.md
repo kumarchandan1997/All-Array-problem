@@ -753,4 +753,28 @@ function findIndex($nums, $target) {
     }
   ```
 
+### 27. Find single number from array in leetcode
+```php
+  function singleNumber($nums) {
+        $newArray =[];
+        foreach($nums as $value)
+        {
+            if(isset($newArray[$value]))
+            {
+                $newArray[$value]++;
+            }else{
+                $newArray[$value]=1;
+            }
+        }
+        foreach($newArray as $key => $value)
+        {
+            if($newArray[$key] ==1)
+            {
+                return $key;
+            }
+        }
+        
+    }
+  ```
+
 
