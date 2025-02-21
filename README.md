@@ -723,4 +723,34 @@ function findIndex($nums, $target) {
     }
   ```
 
+### 26.Sum of good numbers in leetcode
+```php
+  function sumOfGoodNumbers($nums, $k) {
+
+       $sum = 0;
+       $n = count($nums);
+
+        for ($i = 0; $i < $n; $i++) {
+            $isGood = true;
+
+            // Check the element at index i - k, if it exists
+            if ($i - $k >= 0 && $nums[$i] <= $nums[$i - $k]) {
+                $isGood = false;
+            }
+
+            // Check the element at index i + k, if it exists
+            if ($i + $k < $n && $nums[$i] <= $nums[$i + $k]) {
+                $isGood = false;
+            }
+
+            // If the current element is good, add it to the sum
+            if ($isGood) {
+                $sum += $nums[$i];
+            }
+        }
+
+    return $sum;
+    }
+  ```
+
 
