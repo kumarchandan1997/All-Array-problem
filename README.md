@@ -775,6 +775,22 @@ function findIndex($nums, $target) {
         }
         
     }
+
+# second approch
+
+$array = [1,2,3,3,2,1,4];
+
+  function singleNUmber($array)
+  {
+      $result=0;
+      foreach($array as $value)
+      {
+          echo $result."\n";
+          $result ^=$value;
+      }
+      return $result;
+  }
+  echo singleNUmber($array);
   ```
 
 
