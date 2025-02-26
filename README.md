@@ -793,4 +793,46 @@ $array = [1,2,3,3,2,1,4];
   echo singleNUmber($array);
   ```
 
+### 28.Stock buy and sell on max profit in leetcode
+```php
+  function maxProfit($prices) {
+        $minPrice = PHP_INT_MAX;
+        $profit=0;
+
+        foreach($prices as $value)
+        {
+            if($value<$minPrice)
+            {
+                $minPrice = $value;
+            }elseif($value-$minPrice>$profit)
+            {
+                $profit=$value-$minPrice;
+            }
+        }
+        return $profit;
+    }
+
+#second approch
+
+ function bestTimeToBuyStock($array)
+  {
+      $n=count($array);
+      $profit=0;
+      
+      for($i=0;$i<$n;$i++)
+      {
+          for($j=$i+1;$j<$n;$j++)
+          {
+              if($array[$j]-$array[$i] >$profit)
+              {
+                  $profit = $array[$j]-$array[$i];
+              }
+          }
+      }
+      return $profit;
+  }
+  
+  echo bestTimeToBuyStock($array);
+  ```
+
 
