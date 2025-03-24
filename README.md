@@ -631,3 +631,229 @@ $array = [1,2,3,4,5];
   print_r(reverseString($string));
   ```
 
+### 22.Two sum problem in leetcode
+```php
+  function twoSum($nums , $target)
+ {
+    $map =[];
+    foreach($nums as $index => $num){
+        $complement = $target-$num;
+        
+        if(isset($map[$complement]))
+        {
+            return [$map[$complement],$index];
+        }
+        
+        $map[$num] =$index;
+    }
+    return null;
+}
+$nums = [2, 7, 11, 15];
+$target = 17;
+
+$result = twoSum($nums, $target);
+print_r($result);
+  ```
+
+### 23.Remove Element array from leet code
+```php
+  function removeElement(&$nums, $val) {
+    $n = count($nums);
+    $i = 0;
+    for ($j = 0; $j < $n; $j++) {
+        if ($nums[$j] !== $val) {
+            $nums[$i] = $nums[$j];
+            $i++;
+        }
+    }
+    
+    for ($k = $i; $k < $n; $k++) {
+        $nums[$k] = '_';
+    }
+    
+    return $nums;
+}
+$nums = [3, 2, 2, 3];
+$val = 3;
+
+$newLength = removeElement($nums, $val);
+
+print_r($nums);
+  ```
+
+### 24.Search insert position and if not find than insert position from leet code
+```php
+ function searchInsert($nums, $target) {
+        $n = count($nums);
+
+        for($i=0;$i<$n;$i++)
+        {
+            if($nums[$i] == $target){
+                return $i;
+            }
+        }
+
+        for($j=0;$j<$n;$j++)
+        {
+            if($target<$nums[$j]){
+                return $j;
+            }
+        }
+        return $n;
+    }
+}
+
+second  approch by use of binary search
+
+function findIndex($nums, $target) {
+    $left = 0;
+    $right = count($nums) - 1;
+    
+    while ($left <= $right) {
+        $mid = $left + (int)(($right - $left) / 2);
+        
+        if ($nums[$mid] == $target) {
+            return $mid;
+        } elseif ($nums[$mid] < $target) {
+            $left = $mid + 1;
+        } else {
+            $right = $mid - 1;
+        }
+    }
+    
+    return $left;
+}
+  ```
+### 25.Plus one in last of array in leetcode
+```php
+  function plusOne($digits) {
+        $n = count($digits);
+    
+    
+    for ($i = $n - 1; $i >= 0; $i--) {
+        if ($digits[$i] < 9) {
+            $digits[$i]++;
+            return $digits;
+        }
+        
+        $digits[$i] = 0;
+    }
+    
+    array_unshift($digits, 1);
+    return $digits;
+    }
+  ```
+
+### 26.Sum of good numbers in leetcode
+```php
+  function sumOfGoodNumbers($nums, $k) {
+
+       $sum = 0;
+       $n = count($nums);
+
+        for ($i = 0; $i < $n; $i++) {
+            $isGood = true;
+
+            // Check the element at index i - k, if it exists
+            if ($i - $k >= 0 && $nums[$i] <= $nums[$i - $k]) {
+                $isGood = false;
+            }
+
+            // Check the element at index i + k, if it exists
+            if ($i + $k < $n && $nums[$i] <= $nums[$i + $k]) {
+                $isGood = false;
+            }
+
+            // If the current element is good, add it to the sum
+            if ($isGood) {
+                $sum += $nums[$i];
+            }
+        }
+
+    return $sum;
+    }
+  ```
+
+### 27. Find single number from array in leetcode
+```php
+  function singleNumber($nums) {
+        $newArray =[];
+        foreach($nums as $value)
+        {
+            if(isset($newArray[$value]))
+            {
+                $newArray[$value]++;
+            }else{
+                $newArray[$value]=1;
+            }
+        }
+        foreach($newArray as $key => $value)
+        {
+            if($newArray[$key] ==1)
+            {
+                return $key;
+            }
+        }
+        
+    }
+
+# second approch
+
+$array = [1,2,3,3,2,1,4];
+
+  function singleNUmber($array)
+  {
+      $result=0;
+      foreach($array as $value)
+      {
+          echo $result."\n";
+          $result ^=$value;
+      }
+      return $result;
+  }
+  echo singleNUmber($array);
+  ```
+
+### 28.Stock buy and sell on max profit in leetcode
+```php
+  function maxProfit($prices) {
+        $minPrice = PHP_INT_MAX;
+        $profit=0;
+
+        foreach($prices as $value)
+        {
+            if($value<$minPrice)
+            {
+                $minPrice = $value;
+            }elseif($value-$minPrice>$profit)
+            {
+                $profit=$value-$minPrice;
+            }
+        }
+        return $profit;
+    }
+
+#second approch
+
+ function bestTimeToBuyStock($array)
+  {
+      $n=count($array);
+      $profit=0;
+      
+      for($i=0;$i<$n;$i++)
+      {
+          for($j=$i+1;$j<$n;$j++)
+          {
+              if($array[$j]-$array[$i] >$profit)
+              {
+                  $profit = $array[$j]-$array[$i];
+              }
+          }
+      }
+      return $profit;
+  }
+  
+  echo bestTimeToBuyStock($array);
+  ```
+
+
