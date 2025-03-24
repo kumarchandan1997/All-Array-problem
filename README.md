@@ -462,6 +462,27 @@ $array = [1,2,3,4,5];
     $result = rotateArrayRight($arr, $n);
     print_r($result);
 
+    #second and best approch
+
+    function leftRotation($arr,$d)
+    {
+        $n = count($arr);
+        $d=$d % $n;
+        $temp = array_slice($arr,0,$d);
+        
+        for($i=0;$i<$n-$d;$i++)
+        {
+            $arr[$i]=$arr[$d+$i];
+        }
+        
+        for($j=0;$j<$d;$j++)
+        {
+            $arr[$n-$d+$j] = $temp[$j];
+        }
+        
+        return $arr;
+    }
+
    ```
 
    ### 16.Find all pairs in an array that sum up to a given number.
