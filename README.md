@@ -888,4 +888,41 @@ $shift = 20;
   }
   print_r(arrayRightShift($arr, $shift));
 
+```
+### 30.Left shift rotation
+```php
+$arr = [1, 2, 3, 4, 5,6];
+$shift = 10;
+
+function arrayLeftShift($arr, $shift)
+{
+    $length=0;
+    while(isset($arr[$length])){
+        $length++;
+    }
+    
+    if($shift > $length){
+        return "Shift length must be equal or less than array length !";
+    }
+    
+    if($shift == 0 || $shift == $length){
+        return $arr;
+    }
+    
+    $result =[];
+    
+    for($i=$shift;$i<$length;$i++)
+    {
+        $result[]=$arr[$i];
+    }
+    
+    for($i=0;$i<$shift;$i++){
+        $result[]=$arr[$i];
+    }
+    return $result;
+}
+
+print_r(arrayLeftShift($arr, $shift));
+
+
 
