@@ -855,5 +855,37 @@ $array = [1,2,3,3,2,1,4];
   
   echo bestTimeToBuyStock($array);
   ```
+### 29.Right shift rotation
+```php
+$arr = [1, 2, 3, 4, 5, -5, 6, -6]; //8
+$shift = 20;
+
+  function arrayRightShift($arr,$shift)
+  {
+      $length=0;
+      while(isset($arr[$length])){
+          $length++;
+      }
+      
+      if($length<$shift){
+          return "Shift size must be less than or equal to array length !";
+      }
+      
+      if($length == $shift){
+          return $arr;
+      }
+      
+      $result = [];
+      
+      for($i=$length-$shift;$i<$length;$i++){
+          $result[]=$arr[$i];
+      }
+      
+      for($i=0;$i<$length-$shift;$i++){
+          $result[]=$arr[$i];
+      }
+      return $result;
+  }
+  print_r(arrayRightShift($arr, $shift));
 
 
