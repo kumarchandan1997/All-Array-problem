@@ -924,5 +924,25 @@ function arrayLeftShift($arr, $shift)
 
 print_r(arrayLeftShift($arr, $shift));
 
+```
+### 31.Check if an array is a palindrome (same forward and backward).
+```php
+$arr3 = ['a', 'b', 'b', 'a'];
+  
+  
+  function checkPalindromeArray($arr){
+  $n=count($arr);
+  for($i=0;$i<$n/2;$i++)
+  {
+      if($arr[$i] !== $arr[$n-$i-1]){
+        return false;   
+      }
+      return true;
+  }
+  }
+echo checkPalindromeArray($arr3) ? "Palindrome\n" : "Not Palindrome\n";
+  
+
+
 
 
